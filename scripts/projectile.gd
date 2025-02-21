@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Projectile
 
-@export var SPEED = 460.0
+@export var SPEED = 320.0
 @onready var sprite2d = $Sprite2D
 @onready var destroyTimer = $DestroyTimer
 var rotDir: int
@@ -25,6 +25,7 @@ func _physics_process(delta: float) -> void:
 		if collider is Enemy:
 			collider.hit()
 			queue_free()
+
 
 
 func _on_destroy_timer_timeout() -> void:

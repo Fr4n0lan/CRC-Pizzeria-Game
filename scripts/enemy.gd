@@ -14,9 +14,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	chase_dir = updatePlayerPos() - position
-	velocity = chase_dir.normalized() * SPEED
+	velocity = chase_dir.normalized() * SPEED * delta
 	
-	move_and_slide()
+	var collision = move_and_collide(velocity)
+	if collision:
+		var collider = collision.get_collider()
+		if collider is Player:
+			collider.hit()
 
 func updatePlayerPos() -> Vector2:
 	player_pos = get_tree().get_nodes_in_group("player")[0].position
