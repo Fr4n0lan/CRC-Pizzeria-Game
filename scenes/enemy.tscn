@@ -7,6 +7,7 @@
 radius = 56.0357
 
 [node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(0.2, 0.2)
 collision_layer = 8
 collision_mask = 12
 script = ExtResource("1_e25j0")

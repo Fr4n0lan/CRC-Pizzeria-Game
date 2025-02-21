@@ -1,17 +1,17 @@
 extends CharacterBody2D
 class_name Projectile
 
-@export var SPEED = 160.0
+@export var SPEED = 460.0
 @onready var sprite2d = $Sprite2D
-var rotDir
+@onready var destroyTimer = $DestroyTimer
+var rotDir: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rotDir = ((randi()%2)*2-1)
+	destroyTimer.start()
 	
-func _physics_process(delta: float) -> void:
-	scale = Vector2(4, 4)
-	
+func _physics_process(delta: float) -> void:	
 	if randi_range(1, 2) == 1:
 		sprite2d.rotation += 10 * delta * rotDir
 	else:
@@ -25,3 +25,7 @@ func _physics_process(delta: float) -> void:
 		if collider is Enemy:
 			collider.hit()
 			queue_free()
+
+
+func _on_destroy_timer_timeout() -> void:
+	queue_free()

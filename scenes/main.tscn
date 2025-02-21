@@ -8,19 +8,20 @@
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_75yoy")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="GameManager" parent="." instance=ExtResource("2_lcpsc")]
 
 [node name="Spawners" type="Node" parent="."]
 
 [node name="spawner1" type="Node2D" parent="Spawners"]
-position = Vector2(650, 0)
+position = Vector2(350, 0)
 
 [node name="spawner2" type="Node2D" parent="Spawners"]
-position = Vector2(-650, 0)
+position = Vector2(-350, 0)
 
 [node name="spawner3" type="Node2D" parent="Spawners"]
-position = Vector2(0, -439)
+position = Vector2(0, -220)
 
 [node name="spawner4" type="Node2D" parent="Spawners"]
-position = Vector2(0, 439)
+position = Vector2(0, 220)
