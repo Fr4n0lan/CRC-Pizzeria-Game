@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends CharacterBody2D
 class_name Projectile
 
 @export var SPEED = 160.0
@@ -8,12 +8,20 @@ var rotDir
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rotDir = ((randi()%2)*2-1)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+	
+func _physics_process(delta: float) -> void:
 	scale = Vector2(4, 4)
+	
 	if randi_range(1, 2) == 1:
 		sprite2d.rotation += 10 * delta * rotDir
 	else:
 		sprite2d.rotation -= 10 * delta * rotDir
-	global_position += transform.x * SPEED * delta
+		
+	velocity = transform.x * SPEED * delta
+	
+	var collision = move_and_collide(velocity)
+	if collision:
+		var collider = collision.get_collider()
+		if collider is Enemy:
+			collider.hit()
+			queue_free()

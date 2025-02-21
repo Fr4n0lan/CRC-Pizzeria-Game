@@ -1,9 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://evynrxi8pn6w"]
+[gd_scene load_steps=3 format=3 uid="uid://evynrxi8pn6w"]
 
 [ext_resource type="PackedScene" uid="uid://eoxgef8maino" path="res://scenes/player.tscn" id="1_75yoy"]
+[ext_resource type="PackedScene" uid="uid://62aej5ns7sfe" path="res://scenes/gamemanager.tscn" id="2_lcpsc"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_75yoy")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_75yoy")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="GameManager" parent="." instance=ExtResource("2_lcpsc")]
+
+[node name="Spawners" type="Node" parent="."]
+
+[node name="spawner1" type="Node2D" parent="Spawners"]
+position = Vector2(650, 0)
+
+[node name="spawner2" type="Node2D" parent="Spawners"]
+position = Vector2(-650, 0)
+
+[node name="spawner3" type="Node2D" parent="Spawners"]
+position = Vector2(0, -439)
+
+[node name="spawner4" type="Node2D" parent="Spawners"]
+position = Vector2(0, 439)

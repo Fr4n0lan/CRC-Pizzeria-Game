@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("shoot") and canShoot:
-		var projectile_instance: RigidBody2D = projectile_preload.instantiate()
+		var projectile_instance: CharacterBody2D = projectile_preload.instantiate()
 		projectile_instance.position = position
 		projectile_instance.global_rotation = last_input.angle()
 		get_parent().add_child(projectile_instance)
