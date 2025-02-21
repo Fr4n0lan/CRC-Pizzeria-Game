@@ -25,9 +25,3 @@ sprite_frames = SubResource("SpriteFrames_kdihu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_32j07")
-
-[node name="ShootTimer" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
-
-[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
